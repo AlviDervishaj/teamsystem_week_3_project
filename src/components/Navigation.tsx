@@ -26,5 +26,4 @@ const StyledNavLink = ({ title, to }: { title: string, to: string }) => {
     ].join(" ")
     }>{title}</NavLink>
   )
-
 }

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react"
+import { useMemo } from "react"
 import { DisplayedReview } from "../components/DisplayReview";
 import { useNavigate } from "react-router";
 import { Filters } from "../components/Filters";
@@ -26,6 +26,7 @@ export const Reviews = () => {
   const filteredReviews = useMemo(() => {
     const term: string | null = searchParams.get("term");
     const localState: InformationType[] = JSON.parse(localStorage.getItem("reviews") as string) as InformationType[];
+    console.log({localState});
     if (!localState) return [];
     if (!term) return localState;
     const _filteredReviews = localState.filter(predicate => predicate.firstName.includes(term) || predicate.lastName.includes(term) || predicate.university.includes(term));

@@ -1,4 +1,4 @@
-import { FormEvent, FormEventHandler, useEffect, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { InformationType } from "../types";
 

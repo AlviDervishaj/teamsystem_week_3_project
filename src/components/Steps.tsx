@@ -1,5 +1,4 @@
-import { useMemo } from "react";
-import { NavLink } from "react-router-dom"
+import { NavLink, useLocation } from "react-router-dom"
 
 type StepsType = {
   step: number,
@@ -21,17 +20,18 @@ const StepsLocations = [
   "/signup/skills",
   "/signup/review",
 ] as const;
+const allItems: StepsType[] = new Array(StepsLocations.length).fill(0).map((_, index) => {
+  const title = StepsTitles[index];
+  const _href = StepsLocations[index];
+  return { title: title, to: _href, step: index };
+});
 
 export const Steps = () => {
-  const allItems: StepsType[] = useMemo(() => new Array(StepsLocations.length).fill(0).map((_, index) => {
-    const title = StepsTitles[index];
-    const _href = StepsLocations[index];
-    return { title: title, to: _href, step: index };
-  }), []);
+  const location = useLocation();
   return (
     <ol className="flex items-center w-full p-3 space-x-2 text-sm font-medium text-center text-gray-500 bg-white border border-gray-200 rounded-lg shadow-sm dark:text-gray-400 sm:text-base dark:bg-gray-800 dark:border-gray-700 sm:p-4 sm:space-x-4 rtl:space-x-reverse">
       {allItems.map((item) => {
-        return <NavLink key={item.title} to={item.to} className={({ isActive }) => [
+        return <NavLink key={item.title} to={item.to} state={location.state} className={({ isActive }) => [
           isActive && "text-blue-600 dark:text-blue-500 group",
           "flex items-center"
         ].join(" ")}>

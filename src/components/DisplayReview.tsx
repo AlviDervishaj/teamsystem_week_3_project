@@ -18,7 +18,7 @@ export const DisplayedReview = memo(function DisplayedReview({ review }: { revie
           return <p key={lang} className="capitalize pl-3 text-xl">{lang}: {level}</p>
         })
       }</div>
-      <button className="w-fit h-fit px-3 py-2 m-2 text-center bg-indigo-300 text-slate-900 tracking-wide rounded-lg hover:bg-indigo-200 transition-colors duration-300 ease-in-out" onClick={() => navigate("/edit", { state: review })}>Edit</button>
+      <button className="w-fit h-fit px-3 py-2 m-2 text-center bg-indigo-300 text-slate-900 tracking-wide rounded-lg hover:bg-indigo-200 transition-colors duration-300 ease-in-out" onClick={() => navigate("/signup", { state: review })}>Edit</button>
     </div>
   )
 }, (prevProps, nextProps) => {
